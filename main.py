@@ -7,7 +7,7 @@ try:
         num1 = float(input("Введите первое число: "))
         num2 = float(input("Введите второе число: "))
 
-        if operation == '1':
+        if   operation == '1':
              print(f"Результат: {num1} + {num2} = {num1 + num2}")
         elif operation == '2':
               print(f"Результат: {num1} - {num2} = {num1 - num2}")
