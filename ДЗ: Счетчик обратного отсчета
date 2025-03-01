@@ -1,0 +1,10 @@
+while True:
+    try:
+        num = int(input("Введите целое положительное число: "))
+        break 
+    except ValueError:
+        print("Ошибка: введите целое число!")
+
+while num != -1:
+    print(num)
+    num -= 1
