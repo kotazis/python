@@ -1,8 +1,6 @@
-try:
-    num = int(input("Введите целое положительное число: "))
-    while num != -1:
-        print(num)
-        num -= 1
-
-except ValueError:
-    print("Ошибка: введите целое число!")
+true_password = "123qwe"
+while True:
+    input_password = input("Введите пароль ")
+    if input_password == true_password:
+        break
+print("Пароль верен")
