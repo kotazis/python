@@ -6,41 +6,39 @@ def symbols_del ():
             text = text.replace(i, "")
 
 
-def count_of_words ():
-    length_words = len(words)
-    print("Кол-во слов: ", length_words)
+def count_of_words (words):
+    return len(words)
 
 
-def find_longest_word ():
+def find_longest_word (words):
     longest_word = ""
     for word in words:
         if len(word) > len(longest_word):
             longest_word = word
-    print("Самое длинное слово", longest_word)
+    return longest_word
 
 
-def count_of_vowels ():
+def count_of_vowels (text):
     letters = "аеёиоуыэюя"
     letters_count = 0
     for i in text:
         if i in letters:
                 letters_count += 1
-    print("Кол-во гласных", letters_count)
+    return letters_count
 
 
-def number_of_each_word ():
+def number_of_each_word (words):
     words_count = {}
     for i in words:
         words_count[i] = words_count.get(i, 0) + 1  # Увеличиваем счетчик слова
-    print("Слова и кол-во их повторений: ", words_count)
+    return  words_count
 
-text = input("Введите текст ")
-text = text.lower()
+text = input("Введите текст ").lower()
 words = text.split()
 
 symbols_del()
-count_of_words()
-find_longest_word()
-count_of_vowels()
-number_of_each_word()
+print("Кол-во слов: ", count_of_words(words))
+print("Самое длинное слово: ", find_longest_word(text))
+print("Кол-во гласных: ", count_of_vowels(text))
+print("Кол-во каждого слова: ",number_of_each_word(words))
 
