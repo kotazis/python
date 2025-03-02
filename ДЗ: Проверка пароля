@@ -1,6 +1,0 @@
-true_password = "123qwe"
-while True:
-    input_password = input("Введите пароль ")
-    if input_password == true_password:
-        break
-print("Пароль верен")
