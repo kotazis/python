@@ -1,60 +1,46 @@
+def symbols_del ():
+    global text
+    punctuations = '''!()—[]{};:'",<>./?@#$%^&*_№~'''
+    for i in text:
+        if i in punctuations:
+            text = text.replace(i, "")
+
+
+def count_of_words ():
+    length_words = len(words)
+    print("Кол-во слов: ", length_words)
+
+
+def find_longest_word ():
+    longest_word = ""
+    for word in words:
+        if len(word) > len(longest_word):
+            longest_word = word
+    print("Самое длинное слово", longest_word)
+
+
+def count_of_vowels ():
+    letters = "аеёиоуыэюя"
+    letters_count = 0
+    for i in text:
+        if i in letters:
+                letters_count += 1
+    print("Кол-во гласных", letters_count)
+
+
+def number_of_each_word ():
+    words_count = {}
+    for i in words:
+        words_count[i] = words_count.get(i, 0) + 1  # Увеличиваем счетчик слова
+    print("Слова и кол-во их повторений: ", words_count)
+
 text = input("Введите текст ")
 text = text.lower()
+words = text.split()
 
-####################################################
-punctuations = '''!()—[]{};:'",<>./?@#$%^&*_№~'''  #
-for i in text:                                     #
-    if i in punctuations:                          #
-        text = text.replace(i, "")                 #
-####################################################
-
-###################################### кол во слов
-words = text.split()                 #
-length_words = len(words)            #
-print("Кол-во слов: ", length_words) #
-######################################
-
-############################################ самое длинное слово
-longest_word = ""                          #
-for word in words:                         #
-    if len(word) > len(longest_word):      #
-        longest_word = word                #
-print("Самое длинное слово", longest_word) #
-############################################
-
-######################################## # кол-во гласных
-letters = "аеёиоуыэюя"                 #
-letters_count = 0                      #
-for i in text:                         #
-    for j in letters:                  #
-      if i == j:                       #
-         letters_count += 1            #
-print("Кол-во гласных", letters_count) #
-########################################
-
-#################################################################### количество раз, которое каждое слово встречается в тексте.
-words_count = 0                                                    #
-second_words = text.split()                                        #
-for i in words:                                                    #
-    for j in second_words:                                         #
-        if i == j:                                                 #
-            words_count += 1                                       #
-    if words_count !=0:                                            #
-        print(i, "Кол-во раз встречается в тексте: ", words_count) #
-    words_count = 0                                                #
-    while i in second_words:                                       #
-        second_words.remove(i)                                     #
-####################################################################
-
-
-
-
-
-
-
-
-
-
-
-
+symbols_del()
+count_of_words()
+find_longest_word()
+count_of_vowels()
+number_of_each_word()
 
