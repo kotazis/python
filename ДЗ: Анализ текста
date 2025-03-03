@@ -1,16 +1,16 @@
-def symbols_del ():
-    global text
+def symbols_del(text):
     punctuations = '''!()—[]{};:'",<>./?@#$%^&*_№~'''
     for i in text:
         if i in punctuations:
             text = text.replace(i, "")
+    return text
 
 
-def count_of_words (words):
+def count_of_words(words):
     return len(words)
 
 
-def find_longest_word (words):
+def find_longest_word(words):
     longest_word = ""
     for word in words:
         if len(word) > len(longest_word):
@@ -18,27 +18,27 @@ def find_longest_word (words):
     return longest_word
 
 
-def count_of_vowels (text):
+def count_of_vowels(text):
     letters = "аеёиоуыэюя"
     letters_count = 0
     for i in text:
         if i in letters:
-                letters_count += 1
+            letters_count += 1
     return letters_count
 
 
-def number_of_each_word (words):
+def number_of_each_word(words):
     words_count = {}
     for i in words:
         words_count[i] = words_count.get(i, 0) + 1  # Увеличиваем счетчик слова
-    return  words_count
+    return words_count
+
 
 text = input("Введите текст ").lower()
-words = text.split()
+cleaned_text = symbols_del(text)
+words = cleaned_text.split()
 
-symbols_del()
 print("Кол-во слов: ", count_of_words(words))
 print("Самое длинное слово: ", find_longest_word(text))
-print("Кол-во гласных: ", count_of_vowels(text))
-print("Кол-во каждого слова: ",number_of_each_word(words))
-
+print("Кол-во гласных: ", count_of_vowels(cleaned_text))
+print("Кол-во каждого слова: ", number_of_each_word(words))
