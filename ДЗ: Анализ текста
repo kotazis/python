@@ -35,10 +35,10 @@ def number_of_each_word(words):
 
 
 text = input("Введите текст ").lower()
-cleaned_text = symbols_del(text)
-words = cleaned_text.split()
+text = symbols_del(text)
+words = text.split()
 
 print("Кол-во слов: ", count_of_words(words))
-print("Самое длинное слово: ", find_longest_word(text))
-print("Кол-во гласных: ", count_of_vowels(cleaned_text))
+print("Самое длинное слово: ", find_longest_word(words))
+print("Кол-во гласных: ", count_of_vowels(text))
 print("Кол-во каждого слова: ", number_of_each_word(words))
