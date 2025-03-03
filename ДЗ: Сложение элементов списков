@@ -1,0 +1,10 @@
+first_list = [0, 1, 2, 3, 4]
+second_list = [5, 6, 7, 8, 9, 0]
+third_list = []
+
+max_length = max(len(first_list), len(second_list))
+
+for i in range(max_length):
+    third_list.append((first_list[i] if i < len(first_list) else 0) + (second_list[i] if i < len(second_list) else 0))
+
+print(third_list)
