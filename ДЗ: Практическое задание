@@ -1,6 +1,29 @@
 def calculate_average(grades):
     return sum(grades) / len(grades)
 
+def get_lowest_student(students):
+    return min(students, key=lambda student: calculate_average(student["grades"]))
+
+def remove_lowest_student(students):
+    lowest_student = get_lowest_student(students)
+    students.remove(lowest_student)
+    return lowest_student
+
+def calculate_total_average(students):
+    if not students:
+        return 0
+    total_sum = sum(calculate_average(student["grades"]) for student in students)
+    return total_sum / len(students)
+
+def print_students_info(students):
+    for student in students:
+        avg_grade = calculate_average(student["grades"])
+        status = "успешен" if avg_grade >= 75 else "отстающий"
+        print(f"Студент: {student['name']}\nСредний балл: {avg_grade:.2f}\nСтатус: {status}\n")
+    
+    total_avg = calculate_total_average(students)
+    print(f"Средний балл по всем студентам: {total_avg:.2f}")
+
 students = [
     {"name": "Harry", "grades": [80, 90, 78]},
     {"name": "Hermione", "grades": [95, 90, 97]},
@@ -11,15 +34,5 @@ students = [
 new_student = {"name": "Damboldor", "grades": [99, 13, 89]}
 students.append(new_student)
 
-lowest_student = min(students, key=lambda student: calculate_average(student["grades"]))
-students.remove(lowest_student)
-
-total_sum = 0
-for student in students:
-    avg_grade = calculate_average(student["grades"])
-    total_sum += avg_grade
-    status = "успешен" if avg_grade >= 75 else "отстающий"
-    print(f"Студент: {student['name']}\nСредний балл: {avg_grade:.2f}\nСтатус: {status}\n")
-
-total_average_grade = total_sum / len(students)
-print(f"Средний балл по всем студентам: {total_average_grade:.2f}")
+remove_lowest_student(students)
+print_students_info(students)
