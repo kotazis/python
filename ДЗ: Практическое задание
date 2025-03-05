@@ -10,8 +10,6 @@ def remove_lowest_student(students):
     return lowest_student
 
 def calculate_total_average(students):
-    if not students:
-        return 0
     total_sum = sum(calculate_average(student["grades"]) for student in students)
     return total_sum / len(students)
 
