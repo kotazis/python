@@ -1,8 +1,10 @@
 def book_list_view(library):
-    keys = library.keys()
-    if keys:
-        for key in keys:
-            print(key)
+    i = 0
+    if library:
+        print("Книги в библиотеке:")
+        for book in library:
+            i += 1
+            print(i, book)
     else:
         print("В библиотеке нет книг.")
 
