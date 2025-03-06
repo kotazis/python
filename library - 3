@@ -1,0 +1,40 @@
+def book_list_view(library):
+    if library:
+        print("Книги в библиотеке:")
+        for index, book in enumerate(library, start=1):
+            print(f"{index}. {book}")
+    else:
+        print("В библиотеке нет книг.")
+
+
+def add_book(title, author, year):
+    if title in library:
+        choice = input(f"Книга '{title}' уже существует. Хотите обновить информацию? (да/нет): ").strip().lower()
+        if choice == 'да':
+            library[title] = {"автор": author, "год издания": year, "наличие": None}
+            print("Информация о книге  обновлена.")
+        else:
+            print("Добавление книги отменено.")
+    else:
+        library[title] = {"автор": author, "год издания": year, "наличие": None}
+        print("Книга успешно добавлена в библиотеку.")
+
+
+def remove_book(title):
+    if title in library:
+        del library[title]
+        print("Книга успешно удалена")
+    else:
+        print("Такой книги нет")
+
+
+library = {
+    "1984": {"автор": "Джордж Оруэлл", "год издания": 1949, "наличие": True},
+    "Преступление и наказание": {"автор": "Фёдор Достоевский", "год издания": 1866, "наличие": False},
+    "Мастер и Маргарита": {"автор": "Михаил Булгаков", "год издания": 1967, "наличие": True},
+    "Гарри Поттер и философский камень": {"автор": "Дж. К. Роулинг", "год издания": 1997, "наличие": True}
+}
+
+book_list_view(library)
+add_book("Бойцовский клуб", "Чак Паланик", 1996)
+remove_book("1984")
