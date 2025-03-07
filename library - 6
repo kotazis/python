@@ -28,7 +28,7 @@ def remove_book(library, title):
         print(f"Книга '{title}' не найдена в библиотеке.")
 
 
-def issue_book(title):
+def issue_book(library, title):
     if title in library:
         if library[title]["наличие"]:
             library[title]["наличие"] = False
@@ -39,7 +39,7 @@ def issue_book(title):
         print(f"Книга '{title}' не найдена в библиотеке.")
 
 
-def return_book(title):
+def return_book(library, title):
     if title in library:
         if not library[title]["наличие"]:
             library[title]["наличие"] = True
@@ -50,7 +50,7 @@ def return_book(title):
         print(f"Книга '{title}' не найдена в библиотеке.")
 
 
-def find_book(title):
+def find_book(library, title):
     if title in library:
         book = library[title]
         status = "в наличии" if book["наличие"] else "выдана"
@@ -69,4 +69,6 @@ library = {
 book_list_view(library)
 add_book(library, "Бойцовский клуб", "Чак Паланик", 1996)
 remove_book(library, "1984")
-find_book("Бойцовский клуб")
+return_book(library, "Бойцовский клуб",)
+issue_book(library, "Бойцовский клуб",)
+find_book(library, "Бойцовский клуб")
