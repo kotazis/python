@@ -39,7 +39,6 @@ def issue_book(title):
         print(f"Книга '{title}' не найдена в библиотеке.")
 
 
-
 def return_book(title):
     if title in library:
         if not library[title]["наличие"]:
