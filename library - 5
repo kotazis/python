@@ -1,0 +1,62 @@
+def book_list_view(library):
+    if library:
+        print("Книги в библиотеке:")
+        for index, (title, info) in enumerate(library.items(), start=1):
+            print(f"{index}. {title} - {info['автор']} ({info['год издания']})")
+    else:
+        print("В библиотеке нет книг.")
+
+
+def add_book(library, title, author, year):
+    if title in library:
+        choice = input(f"Книга '{title}' уже существует. Хотите обновить информацию? (да/нет): ").strip().lower()
+        if choice == 'да':
+            library[title] = {"автор": author, "год издания": year, "наличие": None}
+            print(f"Информация о книге '{title}' обновлена.")
+        else:
+            print("Добавление книги отменено.")
+    else:
+        library[title] = {"автор": author, "год издания": year, "наличие": None}
+        print(f"Книга '{title}' успешно добавлена в библиотеку.")
+
+
+def remove_book(library, title):
+    if title in library:
+        del library[title]
+        print(f"Книга '{title}' успешно удалена.")
+    else:
+        print(f"Книга '{title}' не найдена в библиотеке.")
+
+
+def issue_book(title):
+    if title in library:
+        if library[title]["наличие"]:
+            library[title]["наличие"] = False
+            print(f"Книга '{title}' успешно выдана.")
+        else:
+            print(f"Книга '{title}' уже выдана.")
+    else:
+        print(f"Книга '{title}' не найдена в библиотеке.")
+
+
+
+def return_book(title):
+    if title in library:
+        if not library[title]["наличие"]:
+            library[title]["наличие"] = True
+            print(f"Книга '{title}' успешно возвращена в библиотеку.")
+        else:
+            print(f"Книга '{title}' уже находится в библиотеке.")
+    else:
+        print(f"Книга '{title}' не найдена в библиотеке.")
+
+library = {
+    "1984": {"автор": "Джордж Оруэлл", "год издания": 1949, "наличие": True},
+    "Преступление и наказание": {"автор": "Фёдор Достоевский", "год издания": 1866, "наличие": False},
+    "Мастер и Маргарита": {"автор": "Михаил Булгаков", "год издания": 1967, "наличие": True},
+    "Гарри Поттер и философский камень": {"автор": "Дж. К. Роулинг", "год издания": 1997, "наличие": True}
+}
+
+book_list_view(library)
+add_book(library, "Бойцовский клуб", "Чак Паланик", 1996)
+remove_book(library, "1984")
