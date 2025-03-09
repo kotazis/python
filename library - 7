@@ -70,30 +70,26 @@ library = {
     "Гарри Поттер и философский камень": {"автор": "Дж. К. Роулинг", "год издания": 1997, "наличие": True}
 }
 
+menu = {
+    "1": (book_list_view, ["library"], "Просмотр всех книг"),
+    "2": (add_book, ["library"], "Добавить книгу"),
+    "3": (remove_book, ["library"], "Удалить книгу"),
+    "4": (issue_book, ["library"], "Выдать книгу"),
+    "5": (return_book, ["library"], "Вернуть книгу"),
+    "6": (find_book, ["library"], "Найти книгу"),
+    "7": (None, [], "Выход")
+}
+
 while True:
     print("\nМеню библиотеки:")
-    print("1. Просмотр всех книг")
-    print("2. Добавить книгу")
-    print("3. Удалить книгу")
-    print("4. Выдать книгу")
-    print("5. Вернуть книгу")
-    print("6. Найти книгу")
-    print("7. Выход")
-
+    for key, (_, _, description) in menu.items():
+        print(f"{key}. {description}")
     choice = input("Выберите действие: ")
-    if choice == "1":
-        book_list_view(library)
-    elif choice == "2":
-        add_book(library)
-    elif choice == "3":
-        remove_book(library)
-    elif choice == "4":
-        issue_book(library)
-    elif choice == "5":
-        return_book(library)
-    elif choice == "6":
-        find_book(library)
-    elif choice == "7":
+    if choice == "7":
         break
+    if choice in menu:
+        func, args, _ = menu[choice]
+        if func:
+            func(*[library])
     else:
         print("Некорректный ввод. Попробуйте снова.")
