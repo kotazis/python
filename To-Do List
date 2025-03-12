@@ -1,0 +1,53 @@
+class ToDoList:
+    def add_task(self, task_list, task, status = False):
+        if task in task_list:
+            print("Такая задача уже существует")
+        else:
+            task_list[task] = status
+            print("Задача добавлена")
+
+    def complete_task(self, task, task_list):
+        if task in task_list:
+            task_list[task] = True
+            print("Статус задачи изменён")
+        else:
+            print("Задача не найдена")
+
+    def remove_task(self, task, task_list):
+        if task in task_list:
+            del task_list[task]
+            print("Задача убрана")
+        else:
+            print("Задача не найдена")
+
+    def list_tasks(self, task_list):
+        for task, completed in task_list.items():
+            if completed == True:
+                status = "✅ Выполнено"
+            else:
+                status = "❌ Не выполнено"
+            print(f"{task}: {status}")
+
+
+task_list = {
+    "Проснуться": True,
+    "Создать список": True,
+    "Создать класс": True,
+    "Создать методы в классе": False,
+    }
+
+my_todo_list = ToDoList()
+
+my_todo_list.add_task(task_list, "Добавить новую задачу")
+
+my_todo_list.complete_task("Создать методы в классе", task_list)
+
+my_todo_list.remove_task("Создать методы в классе", task_list)
+
+my_todo_list.list_tasks(task_list)
+
+
+
+
+
+
