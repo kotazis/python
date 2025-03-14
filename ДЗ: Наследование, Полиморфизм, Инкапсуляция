@@ -1,21 +1,33 @@
-from abc import ABC
+from abc import ABC, abstractmethod
 import math
 
 
-class Shape(ABC):  # абстрактный класс
+class Shape(ABC):
+    @abstractmethod
     def area(self):
         pass
 
+
 class Rectangle(Shape):
-    def area(self, a, h):
-        print("Площадь треугольника: ", a/2*h)
+    def __init__(self, a, h):
+        self.a = a
+        self.h = h
+
+
+    def area(self):
+        print("Площадь треугольника: ", self.a/2 * self.h)
+
 
 class Circle(Shape):
-    def area(self, r):
-        print("Площадь круга: ", math.pi*(r**2))
+    def __init__(self, r):
+        self.r = r
 
 
-rectangle = Rectangle()
-circle = Circle()
-rectangle.area(4, 3)
-circle.area(3)
+    def area(self):
+        print("Площадь круга: ", math.pi * (self.r ** 2))
+
+
+rectangle = Rectangle(4, 3)
+circle = Circle(3)
+rectangle.area()
+circle.area()
