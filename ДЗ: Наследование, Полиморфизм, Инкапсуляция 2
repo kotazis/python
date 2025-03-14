@@ -1,5 +1,5 @@
 class  BankAccount:
-    def __init__(self, value):
+    def __init__(self, value = 0):
       self.__balance = value
 
 
@@ -9,12 +9,12 @@ class  BankAccount:
             print(f'Вы внесли {amount}. Новый баланс: {self.__balance}.')
         else:
             print("Сумма депозита должна быть положительной.")
-   
-   
+
+
     def withdraw(self, amount):
         if 0 < amount <= self.__balance:
             self.__balance -= amount
-            print(f'Вы сняли {amount} у.е. Остаток: {self.__balance} у.е.')
+            print(f'Вы сняли {amount} Остаток: {self.__balance}')
         elif amount > self.__balance:
             print("Недостаточно средств на счёте.")
         else:
@@ -22,4 +22,12 @@ class  BankAccount:
 
 
     def get_balance(self):
-        print(self.__balance)
+        print("Баланс: ", self.__balance)
+
+
+account1 = BankAccount()
+account2 = BankAccount(100)
+account2.get_balance()
+account2.deposit(50)
+account2.withdraw(10)
+account2.get_balance()
