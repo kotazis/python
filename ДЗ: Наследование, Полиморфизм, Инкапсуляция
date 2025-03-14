@@ -1,0 +1,21 @@
+from abc import ABC
+import math
+
+
+class Shape(ABC):  # абстрактный класс
+    def area(self):
+        pass
+
+class Rectangle(Shape):
+    def area(self, a, h):
+        print("Площадь треугольника: ", a/2*h)
+
+class Circle(Shape):
+    def area(self, r):
+        print("Площадь круга: ", math.pi*(r**2))
+
+
+rectangle = Rectangle()
+circle = Circle()
+rectangle.area(4, 3)
+circle.area(3)
