@@ -1,0 +1,17 @@
+with open("data.txt", "r") as file:
+    print(file.read())
+
+with open("data.txt", "a") as file:
+    file.write("\nПервая строка")
+    file.write("\nВторая строка")
+
+with open("data.txt", "r") as file:
+    for line in file:
+        print(line.strip())
+
+with open("data.txt", "rb") as original_file:
+    file_data = original_file.read()
+
+with open("data_copy.txt", "wb") as copy_file:
+    copy_file.write(file_data)
+
