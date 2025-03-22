@@ -30,11 +30,11 @@ button_login.click()
 
 ger_url = driver.current_url
 
-assert url == ger_url
+assert url == ger_url, "Url не верен"
 print("Url верен")
 
 text_product = driver.find_element(By.XPATH, "//span[@class='title']")
 print(text_product.text)
 
-assert text_product.text == "Products"
+assert text_product.text == "Products", "Заголовок не верен"
 print('Заголовок корректен')
