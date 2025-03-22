@@ -17,7 +17,7 @@ driver.get(base_url)
 driver.set_window_size(1920, 1080)
 
 user_name = driver.find_element(By.XPATH, "//input[@id='user-name']")
-user_name.send_keys("standard_use r")
+user_name.send_keys("standard_use")
 
 pass_input = driver.find_element(By.XPATH, "//input[@id='password']")
 pass_input.send_keys("secret_sauce")
@@ -34,8 +34,14 @@ warning_element = driver.find_element(By.XPATH, "//h3[@data-test='error']")
 # присваивание переменной текст сообщения ошибки
 warning_text = warning_element.text
 
+list_of_warnings = (
+    'Epic sadface: Username is required',
+    'Epic sadface: Password is required',
+    'Epic sadface: Username and password do not match any user in this service'
+)
+
 # проверка наличия ошибки
-if warning_text == 'Epic sadface: Username is required' or warning_text == 'Epic sadface: Password is required' or warning_text == 'Epic sadface: Username and password do not match any user in this service':
+if warning_text in list_of_warnings:
     print("Ошибка авторизации")
 else:
     print("Авторизация корректна")
