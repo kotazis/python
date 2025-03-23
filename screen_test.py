@@ -1,3 +1,5 @@
+import datetime
+
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.common.by import By
@@ -21,5 +23,8 @@ pass_input.send_keys("secret_sauce")
 button_login = driver.find_element(By.ID, "login-button")
 button_login.click()
 
-name_scr = 'screenshot.png'
+
+now_date = datetime.datetime.now().strftime("%Y.%m.%d-%H.%M.%S")
+name_scr = 'screenshot.png' + now_date + '.png'
+
 driver.save_screenshot("D:\\PyCharm Community Edition 2024.3.3\\proj1\\screen\\" + name_scr)
