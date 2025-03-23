@@ -13,19 +13,19 @@ base_url = 'https://www.saucedemo.com/'
 driver.get(base_url)
 driver.set_window_size(1920, 1080)
 
-user_name = driver.find_element(By.XPATH, "//input[@id='user-name']").send_keys("standard_user")
-pass_input = driver.find_element(By.XPATH, "//input[@id='password']").send_keys("secret_sauce")
+driver.find_element(By.XPATH, "//input[@id='user-name']").send_keys("standard_user")
+driver.find_element(By.XPATH, "//input[@id='password']").send_keys("secret_sauce")
 
-button_login = driver.find_element(By.ID, "login-button").click()
+driver.find_element(By.ID, "login-button").click()
 
-button_backpack = driver.find_element(By.XPATH, '//*[@id="add-to-cart-sauce-labs-backpack"]').click()
-button_bike_light = driver.find_element(By.XPATH, '//*[@id="add-to-cart-sauce-labs-bike-light"]').click()
-button_bolt_tshirt = driver.find_element(By.XPATH, '//*[@id="add-to-cart-sauce-labs-bolt-t-shirt"]').click()
-button_fleece_jacket = driver.find_element(By.XPATH, '//*[@id="add-to-cart-sauce-labs-fleece-jacket"]').click()
-button_onesie = driver.find_element(By.XPATH, '//*[@id="add-to-cart-sauce-labs-onesie"]').click()
-button_red_tshirt = driver.find_element(By.XPATH, '//*[@id="add-to-cart-test.allthethings()-t-shirt-(red)"]').click()
+driver.find_element(By.XPATH, '//*[@id="add-to-cart-sauce-labs-backpack"]').click()
+driver.find_element(By.XPATH, '//*[@id="add-to-cart-sauce-labs-bike-light"]').click()
+driver.find_element(By.XPATH, '//*[@id="add-to-cart-sauce-labs-bolt-t-shirt"]').click()
+driver.find_element(By.XPATH, '//*[@id="add-to-cart-sauce-labs-fleece-jacket"]').click()
+driver.find_element(By.XPATH, '//*[@id="add-to-cart-sauce-labs-onesie"]').click()
+driver.find_element(By.XPATH, '//*[@id="add-to-cart-test.allthethings()-t-shirt-(red)"]').click()
 
-button_cart = driver.find_element(By.XPATH, '//*[@id="shopping_cart_container"]/a').click()
+driver.find_element(By.XPATH, '//*[@id="shopping_cart_container"]/a').click()
 
 action = ActionChains(driver)
 element = driver.find_element(By.ID, 'item_3_title_link')
