@@ -1,7 +1,3 @@
-import time
-import datetime
-
-from selenium.webdriver.common.keys import Keys
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.common.by import By
@@ -19,14 +15,8 @@ driver.set_window_size(1920, 1080)
 user_name = driver.find_element(By.XPATH, "//input[@id='user-name']")
 user_name.send_keys("standard_user")
 
-# user_name.send_keys(Keys.CONTROL + "a")
-# user_name.send_keys(Keys.BACKSPACE)
-
 pass_input = driver.find_element(By.XPATH, "//input[@id='password']")
 pass_input.send_keys("secret_sauce")
-
-# pass_input.send_keys(Keys.CONTROL + "a")
-# pass_input.send_keys(Keys.BACKSPACE)
 
 button_login = driver.find_element(By.ID, "login-button")
 button_login.click()
