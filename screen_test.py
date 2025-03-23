@@ -1,4 +1,6 @@
 import time
+import datetime
+
 from selenium.webdriver.common.keys import Keys
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
@@ -17,25 +19,17 @@ driver.set_window_size(1920, 1080)
 user_name = driver.find_element(By.XPATH, "//input[@id='user-name']")
 user_name.send_keys("standard_user")
 
-time.sleep(1)
-
-user_name.send_keys(Keys.CONTROL + "a")
-
-time.sleep(1)
-
-user_name.send_keys(Keys.BACKSPACE)
+# user_name.send_keys(Keys.CONTROL + "a")
+# user_name.send_keys(Keys.BACKSPACE)
 
 pass_input = driver.find_element(By.XPATH, "//input[@id='password']")
 pass_input.send_keys("secret_sauce")
 
-time.sleep(1)
-
-pass_input.send_keys(Keys.CONTROL + "a")
-
-time.sleep(1)
-
-pass_input.send_keys(Keys.BACKSPACE)
+# pass_input.send_keys(Keys.CONTROL + "a")
+# pass_input.send_keys(Keys.BACKSPACE)
 
 button_login = driver.find_element(By.ID, "login-button")
 button_login.click()
 
+name_scr = 'screenshot.png'
+driver.save_screenshot("D:\\PyCharm Community Edition 2024.3.3\\proj1\\screen\\" + name_scr)
