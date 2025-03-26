@@ -7,17 +7,16 @@ options = webdriver.ChromeOptions()
 options.add_experimental_option("detach", True)
 driver = webdriver.Chrome(options=options, service=ChromeService(ChromeDriverManager().install()))
 
-base_url = 'https://demoqa.com/checkbox'
+base_url = 'https://demoqa.com/radio-button'
 driver.get(base_url)
 driver.set_window_size(1920, 1080)
 
-check_box = driver.find_element(By.XPATH, '//*[@id="tree-node"]/ol/li/span/label/span[1]')
-check_box.click()
+radio_button = driver.find_element(By.XPATH, '(//label[@class="custom-control-label"])[2]')
+radio_button.click()
 
-input_tree = driver.find_element(By.XPATH, '//*[@id="tree-node-home"]')
+radio_input = driver.find_element(By.XPATH, '//*[@id="impressiveRadio"]')
 
-if input_tree.is_selected():
-    print('Чек-бокс выбран')
+if radio_input.is_selected():
+    print("Radio button is active")
 else:
-    print('Чек-бокс не выбран')
-
+    print("Radio button is NOT active")
