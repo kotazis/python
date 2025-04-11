@@ -3,14 +3,20 @@ import requests
 
 class Test:
     def check_code(self):
-        #['animal', 'career', 'celebrity', 'dev', 'explicit', 'fashion', 'food', 'history', 'money', 'movie',
-        # 'music', 'political', 'religion', 'science', 'sport', 'travel']
-        category = input("Введите номер категории: ")
         jokes_list = requests.get("https://api.chucknorris.io/jokes/categories")
-        categories = jokes_list.json()
-        print(categories)
+        categories_raw = jokes_list.json()
+        
+        categories = {i + 1: name for i, name in enumerate(categories_raw)}
 
-        assert category in  categories, "Такой категории нет"
+        print("Доступные категории:")
+        for num, name in categories.items():
+            print(f"{num}: {name}")
+
+        category_num = int(input("Введите номер категории: "))
+
+        assert category_num in categories, "Такой категории нет"
+
+        category = categories[category_num]
 
         joke = requests.get(f"https://api.chucknorris.io/jokes/random?category={category}")
         joke_text = joke.json().get("value")
