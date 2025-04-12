@@ -1,27 +1,55 @@
 import requests
 
+class GoogleMapsAPI:
+    def __init__(self):
+        self.base_url = "https://rahulshettyacademy.com"
+        self.key = "?key=qaclick123"
 
-class Test:
-    def check_code(self):
-        jokes_list = requests.get("https://api.chucknorris.io/jokes/categories")
-        categories_raw = jokes_list.json()
-        
-        categories = {i + 1: name for i, name in enumerate(categories_raw)}
+    def post_send(self):
+        post_url = self.base_url + "/maps/api/place/add/json" + self.key
+        json_loc = {
+            "location": {
+                "lat": -38.383494,
+                "lng": 33.427362
+            },
+            "accuracy": 50,
+            "name": "Frontline house",
+            "phone_number": "(+91) 983 893 3937",
+            "address": "29, side layout, cohen 09",
+            "types": [
+                "shoe park",
+                "shop"
+            ],
+            "website": "http://google.com",
+            "language": "French-IN"
+        }
 
-        print("Доступные категории:")
-        for num, name in categories.items():
-            print(f"{num}: {name}")
+        place_ids = []
+        for i in range(5):
+            response = requests.post(post_url, json=json_loc)
+            data = response.json()
+            place_id = data.get("place_id", "")
+            place_ids.append(place_id)
+            print(f"[POST{i}] place_id: {place_id} | Статус: {response.status_code}")
 
-        category_num = int(input("Введите номер категории: "))
+        with open("place_ids.txt", "w", encoding="utf-8") as f:
+            f.writelines(f"{ids}\n" for ids in place_ids if ids)
+            
+        print("Все place_id записаны в place_ids.txt\n")
 
-        assert category_num in categories, "Такой категории нет"
+    def get_send(self):
+        get_url_base = self.base_url + "/maps/api/place/get/json" + self.key
 
-        category = categories[category_num]
+        with open("place_ids.txt", "r", encoding="utf-8") as f:
+            place_ids = [line.strip() for line in f if line.strip()]
 
-        joke = requests.get(f"https://api.chucknorris.io/jokes/random?category={category}")
-        joke_text = joke.json().get("value")
-        print(f"Категория: {category} | Шутка: {joke_text}")
+        for i, place_id in enumerate(place_ids):
+            url = f"{get_url_base}&place_id={place_id}"
+            response = requests.get(url)
+            print(f"[GET{i}] place_id: {place_id} | Статус: {response.status_code}")
+            print(f"[GET{i}] Ответ JSON:\n{response.json()}\n")
 
 
-joke1 = Test()
-joke1.check_code()
+start = GoogleMapsAPI()
+start.post_send()
+start.get_send()
