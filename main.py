@@ -4,7 +4,7 @@ class GoogleMapsAPI:
     def __init__(self):
         self.base_url = "https://rahulshettyacademy.com"
         self.key = "?key=qaclick123"
-        self.place_ids = []  
+        self.place_ids = []
 
     def post_send(self):
         post_url = self.base_url + "/maps/api/place/add/json" + self.key
@@ -27,10 +27,13 @@ class GoogleMapsAPI:
 
         for i in range(5):
             response = requests.post(post_url, json=json_loc)
+
             data = response.json()
             place_id = data.get("place_id", "")
             self.place_ids.append(place_id)
             print(f"[POST{i}] place_id: {place_id} | Статус: {response.status_code}")
+            assert response.status_code == 200, f"[POST{i}] Ошибка: Ожидался статус 200, получено {response.status_code}" # добавил проверку
+            print(f"[POST{i}] Статус код верен")
 
     def file_create(self):
         with open("place_ids.txt", "w", encoding="utf-8") as f:
