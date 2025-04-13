@@ -4,7 +4,7 @@ class GoogleMapsAPI:
     def __init__(self):
         self.base_url = "https://rahulshettyacademy.com"
         self.key = "?key=qaclick123"
-        self.place_ids = []  # 🟢 Атрибут экземпляра для хранения всех place_id
+        self.place_ids = []  
 
     def post_send(self):
         post_url = self.base_url + "/maps/api/place/add/json" + self.key
