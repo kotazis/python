@@ -4,6 +4,7 @@ class GoogleMapsAPI:
     def __init__(self):
         self.base_url = "https://rahulshettyacademy.com"
         self.key = "?key=qaclick123"
+        self.place_ids = []  # 🟢 Атрибут экземпляра для хранения всех place_id
 
     def post_send(self):
         post_url = self.base_url + "/maps/api/place/add/json" + self.key
@@ -24,17 +25,16 @@ class GoogleMapsAPI:
             "language": "French-IN"
         }
 
-        place_ids = []
         for i in range(5):
             response = requests.post(post_url, json=json_loc)
             data = response.json()
             place_id = data.get("place_id", "")
-            place_ids.append(place_id)
+            self.place_ids.append(place_id)
             print(f"[POST{i}] place_id: {place_id} | Статус: {response.status_code}")
 
+    def file_create(self):
         with open("place_ids.txt", "w", encoding="utf-8") as f:
-            f.writelines(f"{ids}\n" for ids in place_ids if ids)
-            
+            f.writelines(f"{ids}\n" for ids in self.place_ids if ids)
         print("Все place_id записаны в place_ids.txt\n")
 
     def get_send(self):
@@ -52,4 +52,5 @@ class GoogleMapsAPI:
 
 start = GoogleMapsAPI()
 start.post_send()
+start.file_create()
 start.get_send()
