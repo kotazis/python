@@ -1,7 +1,9 @@
 from utils.http_methods import http_methods
 
+
 base_url = "https://rahulshettyacademy.com"
 key = "?key=qaclick123"
+
 
 class Google_maps_api():
     @staticmethod
