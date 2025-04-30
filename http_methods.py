@@ -7,20 +7,36 @@ class http_methods:
 
     @staticmethod
     def get(url):
-        result = requests.get(url, headers=http_methods.headers, cookies=http_methods.cookie)
-        return result
+        return requests.get(
+            url,
+            headers=http_methods.headers,
+            cookies=http_methods.cookie
+        )
+
 
     @staticmethod
     def post(url, body):
-        result = requests.post(url, json=body, headers=http_methods.headers, cookies=http_methods.cookie)
-        return result
+        return requests.post(
+            url,
+            json=body,
+            headers=http_methods.headers,
+            cookies=http_methods.cookie
+        )
 
     @staticmethod
     def put(url, body):
-        result = requests.put(url, json=body, headers=http_methods.headers, cookies=http_methods.cookie)
-        return result
+        return requests.put(
+            url,
+            json=body,
+            headers=http_methods.headers,
+            cookies=http_methods.cookie
+        )
 
     @staticmethod
     def delete(url, body):
-        result = requests.delete(url, json=body, headers=http_methods.headers, cookies=http_methods.cookie)
-        return result
+        return requests.delete(
+            url,
+            json=body,
+            headers=http_methods.headers,
+            cookies=http_methods.cookie
+        )
