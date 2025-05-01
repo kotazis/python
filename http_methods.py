@@ -1,7 +1,7 @@
 import requests
 
 
-class http_methods:
+class HttpMethods:
     headers = {"Content-type" : 'application/json'}
     cookie = ""
 
@@ -9,17 +9,18 @@ class http_methods:
     def get(url):
         return requests.get(
             url,
-            headers=http_methods.headers,
-            cookies=http_methods.cookie
+            headers=HttpMethods.headers,
+            cookies=HttpMethods.cookie
         )
+
 
     @staticmethod
     def post(url, body):
         return requests.post(
             url,
             json=body,
-            headers=http_methods.headers,
-            cookies=http_methods.cookie
+            headers=HttpMethods.headers,
+            cookies=HttpMethods.cookie
         )
 
     @staticmethod
@@ -27,8 +28,8 @@ class http_methods:
         return requests.put(
             url,
             json=body,
-            headers=http_methods.headers,
-            cookies=http_methods.cookie
+            headers=HttpMethods.headers,
+            cookies=HttpMethods.cookie
         )
 
     @staticmethod
@@ -36,6 +37,6 @@ class http_methods:
         return requests.delete(
             url,
             json=body,
-            headers=http_methods.headers,
-            cookies=http_methods.cookie
+            headers=HttpMethods.headers,
+            cookies=HttpMethods.cookie
         )
