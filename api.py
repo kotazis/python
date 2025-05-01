@@ -1,9 +1,7 @@
 from utils.http_methods import http_methods
 
-
 base_url = "https://rahulshettyacademy.com"
 key = "?key=qaclick123"
-
 
 class Google_maps_api():
     @staticmethod
@@ -28,3 +26,12 @@ class Google_maps_api():
         result_post = http_methods.post(post_url, json_body)
         print(result_post.text)
         return result_post
+
+    @staticmethod
+    def get_new_place(place_id):
+        get_resource = "/maps/api/place/get/json"
+        get_url = base_url + get_resource + key + "&place_id" + place_id
+        print(get_url)
+        result_get = http_methods.get(get_url)
+        print(result_get.text)
+        return  result_get
