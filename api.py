@@ -1,14 +1,14 @@
 from utils.http_methods import HttpMethods
 
 
-base_url = "https://rahulshettyacademy.com"
-key = "?key=qaclick123"
-
-
 class GooglMapsApi:
-    @staticmethod
-    def create_new_place():
-        json_body= {
+    def __init__(self, base_url, key):
+
+        self.base_url = "https://rahulshettyacademy.com"
+        self.key = "?key=qaclick123"
+
+    def create_new_place(self):
+        body_json= {
             "location": {
                 "lat": -38.383494,
                 "lng": 33.427362
@@ -23,17 +23,29 @@ class GooglMapsApi:
             "website": "http://google.com",
             "language": "French-IN"}
         post_resource = "/maps/api/place/add/json"
-        post_url = base_url + post_resource + key
+        post_url = self.base_url + post_resource + self.key
         print(post_url)
-        result_post = HttpMethods.post(post_url, json_body)
+        result_post = HttpMethods.post(post_url, body_json)
         print(result_post.text)
         return result_post
 
-    @staticmethod
-    def get_new_place(place_id):
+    def get_new_place(self, place_id):
         get_resource = "/maps/api/place/get/json"
-        get_url = base_url + get_resource + key + "&place_id" + place_id
+        get_url = self.base_url + get_resource + self.key + "&place_id" + place_id
         print(get_url)
         result_get = HttpMethods.get(get_url)
         print(result_get.text)
         return  result_get
+
+    def put_new_place(self, place_id):
+        put_resource = "/maps/api/place/update/json"
+        put_url = self.base_url + put_resource + self.key
+        print(put_url)
+        put_json = {
+            "place_id" : place_id,
+             "address" : "100 Lenina street, RU",
+            "key" : "qaclick123"
+        }
+        result_put = HttpMethods.put(put_url, put_json)
+        print(result_put.text)
+        return result_put
