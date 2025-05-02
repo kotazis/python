@@ -13,7 +13,6 @@ class HttpMethods:
             cookies=HttpMethods.cookie
         )
 
-
     @staticmethod
     def post(url, body):
         return requests.post(
