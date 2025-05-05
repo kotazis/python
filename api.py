@@ -49,3 +49,14 @@ class GooglMapsApi:
         result_put = HttpMethods.put(put_url, put_json)
         print(result_put.text)
         return result_put
+
+    def delete_new_place(self, place_id):
+        delete_resource = "/maps/api/place/delete/json"
+        delete_url = self.base_url + delete_resource + self.key
+        print(delete_url)
+        delete_json = {
+            "place_id": place_id
+        }
+        result_delete = HttpMethods.delete(delete_url, delete_json)
+        print(result_delete.text)
+        return  result_delete
