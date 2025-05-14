@@ -1,6 +1,5 @@
 from utils.http_methods import HttpMethods
 
-
 class GooglMapsApi:
     def __init__(self, base_url, key):
         self.base_url = base_url
